@@ -171,7 +171,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         {
             tipContent += "\nÄ§ Á¦ +" + data.MP;
         }
-        backpack.ShowTipsContent(tipContent,eventData.position);
+        backpack.ShowTipsContent(tipContent);
     }
 
     public void OnPointerExit(PointerEventData eventData)

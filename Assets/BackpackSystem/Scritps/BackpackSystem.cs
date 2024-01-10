@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BackpackSystem : MonoBehaviour
 {
-    [SerializeField] ItemType myType;
+    [SerializeField] GridType myGridType;
 
     public Transform GridParent;
     public GameObject GridPerfab, DragPerfab;
     public List<GridItem> GridList;
     public ItemTips Tips;
-    private const int MAX_COUNT = 101;
+    public int MAX_COUNT = 101;
     public bool isDrag = false;
-    
+    public static bool inventoryIsFull = false;
 
     private void Awake()
     {
@@ -26,7 +27,7 @@ public class BackpackSystem : MonoBehaviour
         }
     }
  
-    //背包格子是否为空的判断
+    //背包格子是否为满的判断
     public bool IsEmptyBackpack()
     {
         for (int i = 0; i <= MAX_COUNT; i++)
@@ -39,12 +40,24 @@ public class BackpackSystem : MonoBehaviour
         return false;
     }
 
+    //物品类型比较
+    public bool TypeCompare(ItemType i,GridType j)
+    {
+        string item = i.ToString();
+        string back = j.ToString();
+        if (item == back)
+        {
+            return true;  
+        }
+        return false;
+    }
 
     //获取物品
     public void GetItem(int id, int count)
     {
         ItemData data = ItemManager.Instance.GetIDItem(id);
-        if(data.Type == myType)
+
+        if (myGridType == GridType.Inventory)
         {
             for (int i = 0; i <= MAX_COUNT; i++)
             {
@@ -55,6 +68,20 @@ public class BackpackSystem : MonoBehaviour
                 }
             }
         }
+
+        else if(TypeCompare(data.Type, myGridType) && inventoryIsFull)
+        {
+            for (int i = 0; i <= MAX_COUNT; i++)
+            {
+                if (GridList[i].IsEmpty)
+                {
+                    GridList[i].SetData(data, count);
+                    return;
+                }
+            }
+        }
+
+        inventoryIsFull = !IsEmptyBackpack();
     }
 
     //交换物品位置
@@ -67,11 +94,10 @@ public class BackpackSystem : MonoBehaviour
     }
 
     //显示物品描述
-    public void ShowTipsContent(string content, Vector2 pos)
+    public void ShowTipsContent(string content)
     {
         Tips.gameObject.SetActive(true);
         Tips.SetContent(content);
-        //Tips.transform.position = pos;
     }
 
     //隐藏物品描述
@@ -79,4 +105,11 @@ public class BackpackSystem : MonoBehaviour
     {
         Tips.gameObject.SetActive(false);
     }
+}
+
+public enum GridType
+{
+    Normal = ItemType.Normal,
+    Equipment = ItemType.Equipment,
+    Inventory
 }
