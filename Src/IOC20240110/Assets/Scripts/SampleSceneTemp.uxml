@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; margin-top: auto; margin-right: auto; margin-bottom: auto; margin-left: auto; height: 285px; width: 230px; padding-top: 20%;">
+        <ui:Button text="返回欢迎界面" parse-escape-sequences="true" display-tooltip-when-elided="true" name="back" style="-unity-font: resource(&apos;Fonts/荆南麦圆体&apos;); -unity-font-definition: initial; font-size: 36px;" />
+        <ui:Button text="退出游戏" parse-escape-sequences="true" display-tooltip-when-elided="true" name="quit" style="-unity-font: resource(&apos;Fonts/荆南麦圆体&apos;); -unity-font-definition: initial; font-size: 36px;" />
+    </ui:VisualElement>
+</ui:UXML>

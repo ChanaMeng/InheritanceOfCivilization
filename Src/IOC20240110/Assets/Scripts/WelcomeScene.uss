@@ -1,0 +1,54 @@
+.main {
+    margin: auto;
+    height: 80%;
+    width: 80%;
+}
+
+.titles {
+    color: white;
+    font-size: 64px;
+    -unity-font: resource("Fonts/荆南麦圆体");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+}
+
+.buttonGroup {
+    width: 200px;
+    padding-top: 50px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.buttonWelcome {
+    color: white;
+    font-size: 32px;
+    -unity-font: resource("Fonts/荆南麦圆体");
+    -unity-font-definition: initial;
+    
+    background-color: rgba(0,0,0,0);
+
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.buttonWelcome:hover {
+    color: khaki;
+}
+
+.tempTu {
+    color: deeppink;
+    font-size: 80px;
+    -unity-font: resource("Fonts/荆南麦圆体");
+    -unity-font-definition: initial;
+    border-width: 1px;
+    border-color: deeppink;
+    
+    flex-grow: 1;
+    flex-direction: column;
+    
+    padding-top: 20%;
+    padding-left: 100px;
+    margin-left: 250px;
+    margin-top: 50px;
+}
