@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class 测试脚本 : MonoBehaviour
 {
-    public BackpackSystem backpackSystem;
+    public BackpackSystem normalBackpack;
+    public BackpackSystem equipmentBackpack;
+    public BackpackSystem inventoryBackpack;
 
     // Update is called once per frame
     void Update()
@@ -12,7 +14,9 @@ public class 测试脚本 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             int id = Random.Range(1001, 1007);
-            backpackSystem.GetItem(id,Random.Range(1, 6));
+            normalBackpack.GetItem(id,Random.Range(1, 6));
+            equipmentBackpack.GetItem(id, Random.Range(1, 6));
+            inventoryBackpack.GetItem(id, Random.Range(1, 6));
         }
     }
 }

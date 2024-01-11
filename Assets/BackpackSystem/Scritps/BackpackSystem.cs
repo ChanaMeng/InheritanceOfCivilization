@@ -71,6 +71,7 @@ public class BackpackSystem : MonoBehaviour
                 if (GridList[i].IsEmpty)
                 {
                     GridList[i].SetData(data, count);
+                    inventoryIsFull = !IsEmptyBackpack();
                     return;
                 }
             }
@@ -87,8 +88,6 @@ public class BackpackSystem : MonoBehaviour
                 }
             }
         }
-
-        inventoryIsFull = !IsEmptyBackpack();
     }
 
     //交换物品位置

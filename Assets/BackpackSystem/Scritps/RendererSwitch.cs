@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class BpSySwitch : MonoBehaviour
+public class RendererSwitch : MonoBehaviour
 {
     private CanvasGroup myCanvasGroup;
 
