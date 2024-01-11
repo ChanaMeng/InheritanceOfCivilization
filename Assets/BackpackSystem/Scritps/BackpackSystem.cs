@@ -95,10 +95,14 @@ public class BackpackSystem : MonoBehaviour
     //交换物品位置
     public void SwapGrid(GridItem g1,GridItem g2)
     {
-        var tmpData = g1.GetData();
-        var tmpCount = g1.GetItemCount();
-        g1.SetData(g2.GetData(), g2.GetItemCount());
-        g2.SetData(tmpData, tmpCount);
+        if(g1.myBackpackType == g2.myBackpackType)
+        {
+            var tmpData = g1.GetData();
+            var tmpCount = g1.GetItemCount();
+            g1.SetData(g2.GetData(), g2.GetItemCount());
+            g2.SetData(tmpData, tmpCount);
+        }
+        
     }
 
     //显示物品描述

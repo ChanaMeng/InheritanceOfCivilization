@@ -179,7 +179,15 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
                                 }
                             }
                         }
-                        backpack.SwapGrid(this, tmpGrid);
+                        else
+                        {
+                            if(this.myBackpackType == tmpGrid.myBackpackType)
+                            {
+                                backpack.SwapGrid(this, tmpGrid);
+                            }
+                            return;
+                        }
+                        
                     }
                 }
                 else { return; }
