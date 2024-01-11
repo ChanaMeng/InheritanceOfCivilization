@@ -24,6 +24,7 @@ public class BackpackSystem : MonoBehaviour
 
     private void Awake()
     {
+
         GridList = new List<GridItem>();
         for(int i = 0; i <= MAX_COUNT; i++)
         {
@@ -31,6 +32,7 @@ public class BackpackSystem : MonoBehaviour
             grid.Index = i;
             GridList.Add(grid);
             grid.SetBackpackSystem(this);
+            grid.myBackpackType = myBackpackType;
         }
     }
  
@@ -112,5 +114,3 @@ public class BackpackSystem : MonoBehaviour
         Tips.gameObject.SetActive(false);
     }
 }
-
-

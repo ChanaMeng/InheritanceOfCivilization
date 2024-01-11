@@ -94,6 +94,8 @@ MonoBehaviour:
   Icon: {fileID: 5554756227868693958}
   Count: {fileID: 5554756226820067710}
   Index: 0
+  myObj: {fileID: 5554756226490862285}
+  myBackpackType: 0
 --- !u!114 &2193754092598071227
 MonoBehaviour:
   m_ObjectHideFlags: 0
