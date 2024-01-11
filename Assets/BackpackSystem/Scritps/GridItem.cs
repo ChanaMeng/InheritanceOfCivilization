@@ -118,6 +118,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
             if (tmpObj.CompareTag("GridItem"))
             {
                 GridItem tmpGrid = tmpObj.GetComponent<GridItem>();
+                BackpackSystem tmpBackpack = tmpObj.GetComponent<BackpackSystem>();
                 if (tmpGrid.IsEmpty)
                 {
                     tmpGrid.SetData(data, ItemCount);

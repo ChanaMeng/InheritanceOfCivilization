@@ -5,7 +5,14 @@ using UnityEngine;
 
 public class BackpackSystem : MonoBehaviour
 {
-    [SerializeField] GridType myGridType;
+    [SerializeField] BackpackType myBackpackType;
+
+    public enum BackpackType
+    {
+        Normal,
+        Equipment,
+        Inventory
+    }
 
     public Transform GridParent;
     public GameObject GridPerfab, DragPerfab;
@@ -20,7 +27,7 @@ public class BackpackSystem : MonoBehaviour
         GridList = new List<GridItem>();
         for(int i = 0; i <= MAX_COUNT; i++)
         {
-            GridItem grid = GameObject.Instantiate(GridPerfab, GridParent).GetComponent<GridItem>();
+            GridItem grid = Instantiate(GridPerfab, GridParent).GetComponent<GridItem>();
             grid.Index = i;
             GridList.Add(grid);
             grid.SetBackpackSystem(this);
@@ -41,7 +48,7 @@ public class BackpackSystem : MonoBehaviour
     }
 
     //物品类型比较
-    public bool TypeCompare(ItemType i,GridType j)
+    public bool TypeCompare(ItemType i,BackpackType j)
     {
         string item = i.ToString();
         string back = j.ToString();
@@ -57,7 +64,7 @@ public class BackpackSystem : MonoBehaviour
     {
         ItemData data = ItemManager.Instance.GetIDItem(id);
 
-        if (myGridType == GridType.Inventory)
+        if (myBackpackType == BackpackType.Inventory)
         {
             for (int i = 0; i <= MAX_COUNT; i++)
             {
@@ -69,7 +76,7 @@ public class BackpackSystem : MonoBehaviour
             }
         }
 
-        else if(TypeCompare(data.Type, myGridType) && inventoryIsFull)
+        else if(TypeCompare(data.Type, myBackpackType) && inventoryIsFull)
         {
             for (int i = 0; i <= MAX_COUNT; i++)
             {
@@ -107,9 +114,4 @@ public class BackpackSystem : MonoBehaviour
     }
 }
 
-public enum GridType
-{
-    Normal = ItemType.Normal,
-    Equipment = ItemType.Equipment,
-    Inventory
-}
+

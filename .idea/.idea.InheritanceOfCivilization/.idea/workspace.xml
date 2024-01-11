@@ -2,32 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29ca348b-206b-43e5-9def-d859f32c6411" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/背包.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/Damo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/Damo/Damo.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/Damo/Damo.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/BackpackSystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/BackpackSystem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/BpSySwitch.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/BpSySwitch.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/GridItem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/GridItem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/IDrapHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/IDrapHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/ItemData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/ItemData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/ItemManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/ItemManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/ItemTips.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/ItemTips.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/测试脚本.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/脚本/测试脚本.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/预制体.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/预制体/拖拽.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/预制体/拖拽.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/预制体/物品格子.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/背包/预制体/物品格子.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackpackSystem/Damo/Damo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BackpackSystem/Damo/Damo.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackpackSystem/Scritps/BackpackSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BackpackSystem/Scritps/BackpackSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackpackSystem/Scritps/GridItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BackpackSystem/Scritps/GridItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,24 +18,24 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2al31PYjHNsP3jZDUa7GX7vfqKe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "背包",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;背包&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -67,6 +45,7 @@
       <option name="presentableId" value="Default" />
       <updated>1704879124995</updated>
       <workItem from="1704879128052" duration="8000" />
+      <workItem from="1704962130581" duration="7000" />
     </task>
     <servers />
   </component>

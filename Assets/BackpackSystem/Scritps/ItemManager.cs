@@ -25,7 +25,7 @@ public class ItemManager : MonoBehaviour
     }
 
 
-    //读取txt文件的数据，分隔符为#
+    //读取csv文件
     private void LoadIteamData()
     {
         string path = "Data/Item/Data";
@@ -33,22 +33,40 @@ public class ItemManager : MonoBehaviour
         string datas = database.text;
         string[] total_datas = datas.Split('\n');
         dataList = new List<ItemData>(total_datas.Length);
-        foreach(var item in total_datas)
+        if (total_datas != null)
         {
-            string[] data = item.Split('#');
-            ItemData tmp = new ItemData();
-            tmp.id = int.Parse(data[0]);
-            tmp.Name = data[1];
-            tmp.Icon = data[2];
-            tmp.Type = (ItemType)Enum.Parse(typeof(ItemType), data[3]);
-            tmp.EType = (Equipment)Enum.Parse(typeof(Equipment), data[4]);
-            tmp.Attack = int.Parse(data[5]);
-            tmp.Defense = int.Parse(data[6]);
-            tmp.speed = float.Parse(data[7]);
-            tmp.HP = int.Parse(data[8]);
-            tmp.MP = int.Parse(data[9]);
-            tmp.Description = data[10];
-            dataList.Add(tmp);
+            // 跳过第一行数据    
+            var firstItem = total_datas[0];
+            total_datas = total_datas.Skip(1).ToArray();
+
+            int lineNumber = 1; // 记录当前处理的行号
+            // 跳过第一行数据后的处理  
+            foreach (var item in total_datas)
+            {
+                string[] data = item.Split(',');
+                ItemData tmp = new ItemData();
+                try
+                {
+                    tmp.id = int.Parse(data[0]);
+                    tmp.Name = data[1];
+                    tmp.Icon = data[2];
+                    tmp.Type = (ItemType)Enum.Parse(typeof(ItemType), data[3]);
+                    tmp.EType = (Equipment)Enum.Parse(typeof(Equipment), data[4]);
+                    tmp.Attack = int.Parse(data[5]);
+                    tmp.Defense = int.Parse(data[6]);
+                    tmp.speed = float.Parse(data[7]);
+                    tmp.HP = int.Parse(data[8]);
+                    tmp.MP = int.Parse(data[9]);
+                    tmp.Description = data[10];
+                    dataList.Add(tmp);
+                }
+                catch (FormatException) // 如果转换失败，则捕获格式异常  
+                {
+                    Debug.Log($"在第 {lineNumber} 行转换失败: {item}"); // 输出当前行号和内容
+                    continue; // 跳过当前循环迭代并处理下一行  
+                }
+                lineNumber++; // 更新行号
+            }
         }
     }
 
