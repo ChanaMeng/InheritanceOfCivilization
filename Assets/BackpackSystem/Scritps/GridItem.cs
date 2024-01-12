@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
+
 public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler,IPointerEnterHandler,IPointerExitHandler
 {
     public bool IsEmpty { get { return data == null ; } }
@@ -16,6 +18,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
     private bool isDraging = false;
     private GameObject DragObj;
     private BackpackSystem backpack;
+    public BackpackSystem.BackpackType myBackpackType;
 
     public int Index;
     private int ItemCount = 0;
@@ -38,7 +41,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         return true;
     }
 
-    //初始化背包系统
+    //绑定背包系统
     public void SetBackpackSystem(BackpackSystem s)
     {
         backpack = s;
@@ -85,11 +88,41 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         }
     }
 
-    
+    public GameObject GetBackpackTypeObj(GameObject obj)
+    {
+        // 检查当前对象是否有目标类  
+        if (obj.GetComponent<BackpackSystem>() != null)
+        {     
+            return obj; // 结束查找  
+        }
+        else if (obj.transform.parent != null) // 如果有父物体，则递归查找父物体  
+        {
+            GetBackpackTypeObj(obj.transform.parent.gameObject);
+        }
+
+        return null;
+    }
+
+    public bool TypeIsMatch(BackpackSystem.BackpackType grid, ItemData myData)
+    {
+        
+        string type_1 = grid.ToString();
+        string type_2 = myData.Type.ToString();
+
+        if(type_1 == type_2)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (data == null) return;
         DragObj = GameObject.Instantiate(backpack.DragPerfab, backpack.transform);
+        DragObj.GetComponent<Image>().rectTransform.SetParent(GameObject.FindWithTag("RootCanvas").GetComponent<RectTransform>());
+        DragObj.GetComponent<Image>().rectTransform.SetAsLastSibling(); 
         DragObj.transform.position = eventData.position;
         DragObj.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Icons Colored/PNG/" + data.Icon);
         isDraging = true;
@@ -115,34 +148,51 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         if(eventData.pointerCurrentRaycast.gameObject != null)
         {
             var tmpObj = eventData.pointerCurrentRaycast.gameObject;
+            GridItem tmpBackpackType = eventData.pointerCurrentRaycast.gameObject.GetComponent<GridItem>();
+
+
             if (tmpObj.CompareTag("GridItem"))
             {
-                GridItem tmpGrid = tmpObj.GetComponent<GridItem>();
-                if (tmpGrid.IsEmpty)
+                bool isMatch = TypeIsMatch(tmpBackpackType.myBackpackType, data);
+                if (isMatch || tmpBackpackType.myBackpackType == BackpackSystem.BackpackType.Inventory)
                 {
-                    tmpGrid.SetData(data, ItemCount);
-                    Clean();
-                }
-                else if (tmpGrid.Index == Index)
-                {
-                    return;
-                }
-                else
-                {
-                    if(tmpGrid.data.id == data.id)
+                    GridItem tmpGrid = tmpObj.GetComponent<GridItem>();
+                    if (tmpGrid.IsEmpty)
                     {
-                        if (data.Type == ItemType.Normal)
+                        tmpGrid.SetData(data, ItemCount);
+                        Clean();
+                    }
+                    else if (tmpGrid.Index == Index)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        if (tmpGrid.data.id == data.id)
                         {
-                            if (tmpGrid.AddCount(ItemCount))
+                            if (data.Type == ItemType.Normal)
                             {
-                                Clean();
-                                return;
+                                if (tmpGrid.AddCount(ItemCount))
+                                {
+                                    Clean();
+                                    return;
+                                }
                             }
                         }
-                    }         
-                    backpack.SwapGrid(this, tmpGrid);
+                        else
+                        {
+                            if(this.myBackpackType == tmpGrid.myBackpackType)
+                            {
+                                backpack.SwapGrid(this, tmpGrid);
+                            }
+                            return;
+                        }
+                        
+                    }
                 }
+                else { return; }
             }
+            
         }
     }
 
@@ -171,7 +221,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         {
             tipContent += "\n魔 力 +" + data.MP;
         }
-        backpack.ShowTipsContent(tipContent,eventData.position);
+        backpack.ShowTipsContent(tipContent);
     }
 
     public void OnPointerExit(PointerEventData eventData)
