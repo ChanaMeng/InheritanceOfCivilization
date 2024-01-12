@@ -1,4 +1,4 @@
-
+ï»¿
 public class ItemData 
 {
     public int id;
@@ -24,12 +24,12 @@ public enum ItemType
 public enum Equipment
 {
     None ,
-    Í·¿ø ,
-    ¼×ëĞ ,
-    ¿ã×Ó ,
-    Ğ¬×Ó ,
-    Ñü´ø ,
-    ÏîÁ´ ,
-    ½äÖ¸ 
+    å¤´ç›” ,
+    ç”²èƒ„ ,
+    è£¤å­ ,
+    é‹å­ ,
+    è…°å¸¦ ,
+    é¡¹é“¾ ,
+    æˆ’æŒ‡ 
 
 }

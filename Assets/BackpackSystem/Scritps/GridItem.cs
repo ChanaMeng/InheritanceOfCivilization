@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -23,7 +23,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
     public int Index;
     private int ItemCount = 0;
 
-    //Ìí¼ÓÎïÆ·Êı¾İ
+    //æ·»åŠ ç‰©å“æ•°æ®
     public void SetData(ItemData data, int count = 1)
     {
         this.data = data;
@@ -31,7 +31,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         UpdateGrid();
     }
 
-    //Ôö¼ÓÎïÆ·ÊıÁ¿
+    //å¢åŠ ç‰©å“æ•°é‡
     public bool AddCount(int count, bool isAdd = true)
     {
         if (data == null || ItemCount >= 99)
@@ -41,32 +41,32 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         return true;
     }
 
-    //°ó¶¨±³°üÏµÍ³
+    //ç»‘å®šèƒŒåŒ…ç³»ç»Ÿ
     public void SetBackpackSystem(BackpackSystem s)
     {
         backpack = s;
     }
 
-    //»ñÈ¡ÎïÆ·µÄº¯Êı
+    //è·å–ç‰©å“çš„å‡½æ•°
     public ItemData GetData()
     {
         return data;
     }
 
-    //Çå³ıÎïÆ·
+    //æ¸…é™¤ç‰©å“
     public void Clean()
     {
         data = null;
         UpdateGrid(); 
     }
 
-    //»ñÈ¡ÎïÆ·ÊıÁ¿
+    //è·å–ç‰©å“æ•°é‡
     public int GetItemCount()
     {
         return ItemCount;
     }
 
-    //¸üĞÂÎïÆ·¸ñ×Ó
+    //æ›´æ–°ç‰©å“æ ¼å­
     public void UpdateGrid()
     {
         if(data == null)
@@ -90,12 +90,12 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
 
     public GameObject GetBackpackTypeObj(GameObject obj)
     {
-        // ¼ì²éµ±Ç°¶ÔÏóÊÇ·ñÓĞÄ¿±êÀà  
+        // æ£€æŸ¥å½“å‰å¯¹è±¡æ˜¯å¦æœ‰ç›®æ ‡ç±»  
         if (obj.GetComponent<BackpackSystem>() != null)
         {     
-            return obj; // ½áÊø²éÕÒ  
+            return obj; // ç»“æŸæŸ¥æ‰¾  
         }
-        else if (obj.transform.parent != null) // Èç¹ûÓĞ¸¸ÎïÌå£¬Ôòµİ¹é²éÕÒ¸¸ÎïÌå  
+        else if (obj.transform.parent != null) // å¦‚æœæœ‰çˆ¶ç‰©ä½“ï¼Œåˆ™é€’å½’æŸ¥æ‰¾çˆ¶ç‰©ä½“  
         {
             GetBackpackTypeObj(obj.transform.parent.gameObject);
         }
@@ -203,23 +203,23 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         string tipContent = data.Name + "\n" + data.Description;
         if(data.Attack > 0)
         {
-            tipContent += "\n¹¥»÷Á¦ +" + data.Attack;
+            tipContent += "\næ”»å‡»åŠ› +" + data.Attack;
         }
         if (data.Defense > 0)
         {
-            tipContent += "\n·ÀÓùÁ¦ +" + data.Defense;
+            tipContent += "\né˜²å¾¡åŠ› +" + data.Defense;
         }
         if (data.speed > 0)
         {
-            tipContent += "\nËÙ ¶È +" + data.speed;
+            tipContent += "\né€Ÿ åº¦ +" + data.speed;
         }
         if (data.HP > 0)
         {
-            tipContent += "\nÉúÃüÁ¦ +" + data.HP;
+            tipContent += "\nç”Ÿå‘½åŠ› +" + data.HP;
         }
         if (data.MP> 0)
         {
-            tipContent += "\nÄ§ Á¦ +" + data.MP;
+            tipContent += "\né­” åŠ› +" + data.MP;
         }
         backpack.ShowTipsContent(tipContent);
     }

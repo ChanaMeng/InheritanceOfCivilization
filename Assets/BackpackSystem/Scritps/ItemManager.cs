@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +8,11 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     public static ItemManager Instance { get; private set; }
-    private List<ItemData> dataList; 
+    private List<ItemData> dataList;
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             LoadIteamData();
@@ -25,7 +25,7 @@ public class ItemManager : MonoBehaviour
     }
 
 
-    //¶ÁÈ¡csvÎÄ¼ş
+    //è¯»å–csvæ–‡ä»¶
     private void LoadIteamData()
     {
         string path = "Data/Item/Data";
@@ -35,12 +35,12 @@ public class ItemManager : MonoBehaviour
         dataList = new List<ItemData>(total_datas.Length);
         if (total_datas != null)
         {
-            // Ìø¹ıµÚÒ»ĞĞÊı¾İ    
+            // è·³è¿‡ç¬¬ä¸€è¡Œæ•°æ®    
             var firstItem = total_datas[0];
             total_datas = total_datas.Skip(1).ToArray();
 
-            int lineNumber = 1; // ¼ÇÂ¼µ±Ç°´¦ÀíµÄĞĞºÅ
-            // Ìø¹ıµÚÒ»ĞĞÊı¾İºóµÄ´¦Àí  
+            int lineNumber = 1; // è®°å½•å½“å‰å¤„ç†çš„è¡Œå·
+            // è·³è¿‡ç¬¬ä¸€è¡Œæ•°æ®åçš„å¤„ç†  
             foreach (var item in total_datas)
             {
                 string[] data = item.Split(',');
@@ -60,38 +60,40 @@ public class ItemManager : MonoBehaviour
                     tmp.Description = data[10];
                     dataList.Add(tmp);
                 }
-                catch (FormatException) // Èç¹û×ª»»Ê§°Ü£¬Ôò²¶»ñ¸ñÊ½Òì³£  
+                catch (FormatException) // å¦‚æœè½¬æ¢å¤±è´¥ï¼Œåˆ™æ•è·æ ¼å¼å¼‚å¸¸  
                 {
-                    Debug.Log($"ÔÚµÚ {lineNumber} ĞĞ×ª»»Ê§°Ü: {item}"); // Êä³öµ±Ç°ĞĞºÅºÍÄÚÈİ
-                    continue; // Ìø¹ıµ±Ç°Ñ­»·µü´ú²¢´¦ÀíÏÂÒ»ĞĞ  
+                    Debug.Log($"åœ¨ç¬¬ {lineNumber} è¡Œè½¬æ¢å¤±è´¥: {item}"); // è¾“å‡ºå½“å‰è¡Œå·å’Œå†…å®¹
+                    continue; // è·³è¿‡å½“å‰å¾ªç¯è¿­ä»£å¹¶å¤„ç†ä¸‹ä¸€è¡Œ  
                 }
-                lineNumber++; // ¸üĞÂĞĞºÅ
+                lineNumber++; // æ›´æ–°è¡Œå·
             }
         }
     }
 
-    //»ñÈ¡Ëæ»úµÄÎïÆ·
+    //è·å–éšæœºçš„ç‰©å“
     public ItemData GetRandonItem()
     {
         return dataList[UnityEngine.Random.Range(0, dataList.Count)];
     }
 
-    //»ñÈ¡Ëæ»úµÄNormalÀàĞÍµÄÎïÆ·
+    //è·å–éšæœºçš„Normalç±»å‹çš„ç‰©å“
     public ItemData GetNormalItem()
     {
-        while (true) {
+        while (true)
+        {
 
             var tmp = dataList[UnityEngine.Random.Range(0, dataList.Count)];
-            if (tmp.Type == ItemType.Normal) {
+            if (tmp.Type == ItemType.Normal)
+            {
 
                 return tmp;
 
-            }   
+            }
         }
-        
+
     }
 
-    //»ñÈ¡Ëæ»úµÄEquimentÀàĞÍµÄÎïÆ·
+    //è·å–éšæœºçš„Equimentç±»å‹çš„ç‰©å“
     public ItemData GetEquipmetItem()
     {
         while (true)
@@ -106,10 +108,10 @@ public class ItemManager : MonoBehaviour
 
     }
 
-    //Í¨¹ıid»ñÈ¡ÎïÆ·
+    //é€šè¿‡idè·å–ç‰©å“
     public ItemData GetIDItem(int id)
     {
-        for(int i = 0; i < dataList.Count; i++)
+        for (int i = 0; i < dataList.Count; i++)
         {
             if (dataList[i].id == id)
             {
