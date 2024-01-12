@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5554756226490862287}
   - component: {fileID: 2193754092598071227}
   m_Layer: 5
-  m_Name: "\u7269\u54C1\u680F\u683C\u5B50"
+  m_Name: ItemGrid
   m_TagString: GridItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   Count: {fileID: 5554756226820067710}
   Index: 0
   myObj: {fileID: 5554756226490862285}
+  myBackpackType: 0
 --- !u!114 &2193754092598071227
 MonoBehaviour:
   m_ObjectHideFlags: 0
