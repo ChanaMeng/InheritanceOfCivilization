@@ -1,43 +1,41 @@
-.main {
+.main{
     margin: auto;
-    height: 300px;
-    width: 80%;
+    padding: 50px;
 }
 
 .titles {
-    font-size: 64px;
-    -unity-font: resource("Fonts/荆南麦圆体");
-    -unity-font-definition: initial;
-    -unity-text-align: middle-center;
+    background-image: resource("Imgs/titles");
+    width: 500px;
+    height: 150px;
+    margin-bottom: 150px;
 }
 
-.titles2 {
+.button {
+    color: white;
     font-size: 32px;
-    -unity-font: resource("Fonts/荆南麦圆体");
+    -unity-font: resource("Fonts/8615");
     -unity-font-definition: initial;
-    -unity-text-align: middle-center;
-}
 
-.buttonGroup {
-    width: 200px;
-    padding-top: 50px;
-    margin: auto;
-    bottom: 0;
-}
 
-.buttonWelcome {
-    font-size: 32px;
-    -unity-font: resource("Fonts/荆南麦圆体");
-    -unity-font-definition: initial;
-    
     background-color: rgba(0,0,0,0);
     border-width: 0;
 
     flex-grow: 1;
     flex-direction: column;
+    
+    margin: auto;
+    padding: 0;
+    width: 150px;
 }
 
-.buttonWelcome:hover {
-    color: khaki;
+.button:hover {
+    background-image: resource("Imgs/hover");
+    width: 150px;
 }
 
+.img{
+    background-image: resource("Imgs/line");
+    height: 3px;
+    width: 200px;
+    margin: auto;
+}

@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/WelcomeScene.uss?fileID=7433441132597879392&amp;guid=7931466e94b2cb74b9860142d6876f44&amp;type=3#WelcomeScene" />
+    <ui:VisualElement class="main">
+        <ui:Label name="titles" text="Inheritance Of Civilization&#10;文明的传承" class="titles" />
+        <ui:VisualElement class="buttonGroup">
+            <ui:Button name="load" text="加载存档" class="buttonWelcome" />
+            <ui:Button name="start" text="开始新游戏" class="buttonWelcome" />
+            <ui:Button name="options" text="选项" class="buttonWelcome" />
+            <ui:Button name="quit" text="退出" class="buttonWelcome" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

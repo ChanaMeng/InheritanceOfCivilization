@@ -6,12 +6,33 @@
          noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" 
          editor-extension-mode="False">
     
-    <Style src="project://database/Assets/Scripts/WelcomeScene.uss?fileID=7433441132597879392&amp;guid=7931466e94b2cb74b9860142d6876f44&amp;type=3#WelcomeScene" />
-   
+    <Style src="project://database/Assets/Scripts/OptionsScene.uss?fileID=7433441132597879392&amp;
+                guid=213e590fecc08f54abac13efc928b0cd&amp;
+                type=3#OptionsScene" />
+    
     <ui:VisualElement name="main" class="main">
-        <ui:Label text="选项" class="titles2" />
-        <ui:VisualElement name="nav" />
-        <ui:VisualElement name="panel" />
+        <ui:Label text="选项" class="titles" />
+        <ui:VisualElement class="body">
+            <ui:VisualElement class="buttonGroup">
+                <ui:Button name="huaMian" text="画面" class="buttonOptions" />
+                <ui:Button name="yinPin" text="音频" class="buttonOptions" />
+                <ui:Button name="caoZuo" text="操作" class="buttonOptions" />
+            </ui:VisualElement>
+            <ui:VisualElement class="panel">
+                <ui:VisualElement name="huaMianPanel"  style="display:none">
+                    <ui:Toggle name="full" text="全屏" class="full" />
+                    <ui:Label class="resLabel" text="设置分辨率:" />
+                    <ui:DropdownField name="res" class="res" />
+                </ui:VisualElement>
+                <ui:VisualElement name="yinPinPanel"  style="display:none">
+                    <ui:Label class="resLabel" text="这里是音频相关选项" />
+                </ui:VisualElement>
+                <ui:VisualElement name="caoZuoPanel"  style="display:none">
+                    <ui:Label class="resLabel" text="这里是操作相关选项" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button name="back" text="返回主界面" class="buttonBack" />
     </ui:VisualElement>
     
 </ui:UXML>

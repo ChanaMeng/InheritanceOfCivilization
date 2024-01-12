@@ -1,0 +1,75 @@
+.main {
+    margin: auto;
+    padding: 20px;
+    
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.titles {
+    font-size: 64px;
+    -unity-font: resource("Fonts/8615");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+}
+
+.body {
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.buttonGroup {
+    flex-grow: 1;
+    
+    width: 100px;
+}
+
+.buttonOptions {
+    font-size: 32px;
+    -unity-font: resource("Fonts/8615");
+    -unity-font-definition: initial;
+
+    background-color: rgba(0,0,0,0);
+    border-width: 0;
+
+    flex-grow: 1;
+}
+
+.buttonOptions:hover {
+    -unity-font-style: bold;
+}
+
+.panel {
+    flex-grow: 1;
+    width: 300px;
+    font-size: 20px;
+    -unity-font: resource("Fonts/8615");
+    -unity-font-definition: initial;
+    -unity-font-style: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.full {
+    margin: auto;
+}
+
+.resLabel {
+    margin-left: 30px;
+}
+
+.res {
+    margin: auto;
+    width: 250px;
+}
+
+.buttonBack {
+    font-size: 32px;
+    -unity-font: resource("Fonts/8615");
+    -unity-font-definition: initial;
+    -unity-font-style: bold;
+
+    background-color: rgba(0,0,0,0);
+    border-width: 0;
+}

@@ -27,7 +27,7 @@ public class WelcomeScene : MonoBehaviour
 
     private void OnOptionsButtonClicked(MouseUpEvent evt)
     {
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
     }
 
     private void OnQuitButtonClicked(MouseUpEvent evt)
