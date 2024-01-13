@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5554756226490862284}
   - component: {fileID: 5554756226490862273}
   - component: {fileID: 5554756226490862286}
-  - component: {fileID: 5554756226490862287}
   - component: {fileID: 2193754092598071227}
+  - component: {fileID: 2963976085679096593}
   m_Layer: 5
-  m_Name: "\u7269\u54C1\u680F\u683C\u5B50"
+  m_Name: Slot
   m_TagString: GridItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,8 +36,8 @@ RectTransform:
   - {fileID: 5554756226820067708}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -79,22 +79,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5554756226490862287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5554756226490862285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f202c4661d8425c4283fb6cf6718f027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Icon: {fileID: 5554756227868693958}
-  Count: {fileID: 5554756226820067710}
-  Index: 0
-  myObj: {fileID: 5554756226490862285}
 --- !u!114 &2193754092598071227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +123,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2963976085679096593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5554756226490862285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e516596898d547428f5115667ed076b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 5554756227868693958}
+  Count: {fileID: 5554756226820067710}
+  myBackpackType: 2
+  Index: 0
 --- !u!1 &5554756226820067709
 GameObject:
   m_ObjectHideFlags: 0

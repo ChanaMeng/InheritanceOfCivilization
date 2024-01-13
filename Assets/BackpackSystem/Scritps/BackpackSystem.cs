@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +11,8 @@ public class BackpackSystem : MonoBehaviour
     {
         Normal,
         Equipment,
-        Inventory
+        Inventory,
+        CraftingSlot
     }
 
     public Transform GridParent;
@@ -26,17 +27,21 @@ public class BackpackSystem : MonoBehaviour
     {
 
         GridList = new List<GridItem>();
-        for(int i = 0; i <= MAX_COUNT; i++)
+        if(myBackpackType != BackpackType.CraftingSlot)
         {
-            GridItem grid = Instantiate(GridPerfab, GridParent).GetComponent<GridItem>();
-            grid.Index = i;
-            GridList.Add(grid);
-            grid.SetBackpackSystem(this);
-            grid.myBackpackType = myBackpackType;
+            for (int i = 0; i <= MAX_COUNT; i++)
+            {
+                GridItem grid = Instantiate(GridPerfab, GridParent).GetComponent<GridItem>();
+                grid.Index = i;
+                GridList.Add(grid);
+                grid.SetBackpackSystem(this);
+                grid.myBackpackType = myBackpackType;
+            }
         }
+        
     }
  
-    //±³°ü¸ñ×ÓÊÇ·ñÎªÂúµÄÅĞ¶Ï
+    //èƒŒåŒ…æ ¼å­æ˜¯å¦ä¸ºæ»¡çš„åˆ¤æ–­
     public bool IsEmptyBackpack()
     {
         for (int i = 0; i <= MAX_COUNT; i++)
@@ -49,7 +54,7 @@ public class BackpackSystem : MonoBehaviour
         return false;
     }
 
-    //ÎïÆ·ÀàĞÍ±È½Ï
+    //ç‰©å“ç±»å‹æ¯”è¾ƒ
     public bool TypeCompare(ItemType i,BackpackType j)
     {
         string item = i.ToString();
@@ -61,10 +66,10 @@ public class BackpackSystem : MonoBehaviour
         return false;
     }
 
-    //»ñÈ¡ÎïÆ·
+    //è·å–ç‰©å“
     public void GetItem(int id, int count)
     {
-        ItemData data = ItemManager.Instance.GetIDItem(id);
+        ItemData data = ItemManager.Instance.GetItemById(id);
 
         if (myBackpackType == BackpackType.Inventory)
         {
@@ -92,7 +97,7 @@ public class BackpackSystem : MonoBehaviour
         }
     }
 
-    //½»»»ÎïÆ·Î»ÖÃ
+    //äº¤æ¢ç‰©å“ä½ç½®
     public void SwapGrid(GridItem g1,GridItem g2)
     {
         if(g1.myBackpackType == g2.myBackpackType)
@@ -105,14 +110,14 @@ public class BackpackSystem : MonoBehaviour
         
     }
 
-    //ÏÔÊ¾ÎïÆ·ÃèÊö
+    //æ˜¾ç¤ºç‰©å“æè¿°
     public void ShowTipsContent(string content)
     {
         Tips.gameObject.SetActive(true);
         Tips.SetContent(content);
     }
 
-    //Òş²ØÎïÆ·ÃèÊö
+    //éšè—ç‰©å“æè¿°
     public void HideTipsContent()
     {
         Tips.gameObject.SetActive(false);
