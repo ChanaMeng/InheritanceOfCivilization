@@ -8,7 +8,6 @@ public class CrafitingManager : MonoBehaviour
 {
     public Slot[] craftingSlots;
 
-    public List<ItemData> itemList;
     public string[] recipes;
     public List<string> recipeResultsString;
     private List<ItemData> recipeResults;
@@ -38,15 +37,14 @@ public class CrafitingManager : MonoBehaviour
 
     public void Compositing()
     {
-        resultSlot.gameObject.SetActive(false);
         resultSlot.data = null;
 
         string currentRecipeString = "";
-        foreach (ItemData item in itemList)
+        foreach (Slot slot in craftingSlots)
         {
-            if (item != null)
+            if (slot.data != null)
             {
-                currentRecipeString += item.Name;
+                currentRecipeString += slot.data.Name;
             }
             else
             {
@@ -59,19 +57,10 @@ public class CrafitingManager : MonoBehaviour
         {
             if (currentRecipeString == recipes[i])
             {
-                resultSlot.gameObject.SetActive(true);
-                Sprite iconSprite = Resources.Load<Sprite>("Images/Icons Colored/PNG/" + recipeResults[i].Icon);
-                if (iconSprite != null)
-                {
-                    resultSlot.GetComponent<Image>().sprite = iconSprite;
-                }
-                else
-                {
-                    Debug.LogError($"Failed to load sprite for icon: {recipeResults[i].Icon}");
-                }
-                resultSlot.data = recipeResults[i];
+                resultSlot.SetData(recipeResults[i], 1);
                 break; // 找到匹配的配方后立即跳出循环
             }
         }
     }
+
 }

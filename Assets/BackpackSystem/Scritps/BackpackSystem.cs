@@ -38,6 +38,12 @@ public class BackpackSystem : MonoBehaviour
                 grid.myBackpackType = myBackpackType;
             }
         }
+        else
+        {
+            Slot slot = this.GetComponent<Transform>().GetChild(0).GetComponent<Slot>();
+            slot.SetBackpackSystem(this);
+
+        }
         
     }
  

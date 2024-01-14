@@ -13,7 +13,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
     private Image Icon;
     [SerializeField]
     private Text Count;
-    private ItemData data;
+    public ItemData data;
 
     private bool isDraging = false;
     private GameObject DragObj;
@@ -117,7 +117,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         return false;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public virtual void OnBeginDrag(PointerEventData eventData)
     {
         if (data == null) return;
         DragObj = GameObject.Instantiate(backpack.DragPerfab, backpack.transform);
@@ -130,7 +130,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         //backpack.HideTipsContent();
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public virtual void OnDrag(PointerEventData eventData)
     {
         if (isDraging && DragObj != null)
         {
@@ -138,7 +138,7 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         }
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
         isDraging = false;
         Destroy(DragObj);
@@ -149,12 +149,13 @@ public class GridItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         {
             var tmpObj = eventData.pointerCurrentRaycast.gameObject;
             GridItem tmpBackpackType = eventData.pointerCurrentRaycast.gameObject.GetComponent<GridItem>();
+            Slot tmpSlotType = eventData.pointerCurrentRaycast.gameObject.GetComponent<Slot>();
 
 
             if (tmpObj.CompareTag("GridItem"))
             {
                 bool isMatch = TypeIsMatch(tmpBackpackType.myBackpackType, data);
-                if (isMatch || tmpBackpackType.myBackpackType == BackpackSystem.BackpackType.Inventory || tmpBackpackType.myBackpackType == BackpackSystem.BackpackType.CraftingSlot)
+                if (isMatch || tmpBackpackType.myBackpackType == BackpackSystem.BackpackType.Inventory || tmpSlotType.mySlotType == Slot.SlotType.CraftingSlot)
                 {
                     GridItem tmpGrid = tmpObj.GetComponent<GridItem>();
                     if (tmpGrid.IsEmpty)
